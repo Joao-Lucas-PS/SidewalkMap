@@ -17,8 +17,10 @@ LEFT JOIN localizacao l
 ON r.id_relato = l.id_relato
 WHERE r.id_relato IN (26, 96);
 
--- TESTES SIMPLES
+-- Iniciar transação para não salvar os dados de teste
+BEGIN;
 
+-- TESTES SIMPLES
 -- TESTE 1: Verificar se as tabelas principais existem
 SELECT table_name
 FROM information_schema.tables
@@ -31,11 +33,6 @@ AND table_name IN (
     'foto',
     'validacao'
 );
-
-
--- Iniciar transação para não salvar os dados de teste
-BEGIN;
-
 
 -- TESTE 2: Cadastrar um usuário válido
 INSERT INTO usuario (nome, email, senha_hash, papel_usuario)
