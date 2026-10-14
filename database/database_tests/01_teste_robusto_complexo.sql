@@ -1,8 +1,5 @@
--- ============================================================
 -- 4. SCRIPT DE TESTES DO BANCO DE DADOS
 -- PROJETO INTEGRADOR: SIDEWALK MAP
--- SGBD: POSTGRESQL
--- ============================================================
 
 -- IMPORTANTE TIME:
 -- 1. O script NAO apaga os dados existentes.
@@ -13,10 +10,7 @@
 -- 5. Execute em um banco no qual as seis tabelas ja existam.
 -- 6. Os testes utilizam dados ficticios.
 
--- ============================================================
 -- ETAPA 1: PREPARAR A TABELA TEMPORARIA DE RESULTADOS
--- ============================================================
-
 CREATE TEMP TABLE IF NOT EXISTS sidewalk_test_results (
     id_teste INTEGER,
     descricao TEXT,
@@ -26,18 +20,10 @@ CREATE TEMP TABLE IF NOT EXISTS sidewalk_test_results (
 
 TRUNCATE TABLE sidewalk_test_results;
 
-
--- ============================================================
 -- ETAPA 2: INICIAR A TRANSACAO
--- ============================================================
-
 BEGIN;
 
-
--- ============================================================
 -- ETAPA 3: EXECUTAR OS TESTES
--- ============================================================
-
 DO $$
 DECLARE
     v_usuario INTEGER;
@@ -59,11 +45,7 @@ BEGIN
     v_nome_categoria :=
         'Categoria Teste ' || v_sufixo;
 
-
-    -- ========================================================
     -- TESTE 01: VERIFICAR AS SEIS TABELAS
-    -- ========================================================
-
     SELECT COUNT(*)
     INTO v_total
     FROM information_schema.tables
@@ -90,10 +72,7 @@ BEGIN
     );
 
 
-    -- ========================================================
     -- TESTE 02: CADASTRAR USUARIO E RESPONSAVEL VALIDOS
-    -- ========================================================
-
     INSERT INTO usuario (
         nome, email, senha_hash, papel_usuario
     )
@@ -124,11 +103,7 @@ BEGIN
         'APROVADO'
     );
 
-
-    -- ========================================================
     -- TESTE 03: BLOQUEAR EMAIL DUPLICADO
-    -- ========================================================
-
     v_ok := FALSE;
 
     BEGIN
