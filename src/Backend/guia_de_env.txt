@@ -1,0 +1,4 @@
+DB_HOST=localhost
+DB_NAME=sidewalk_map
+DB_USER=postgres (Seu usuário)
+DB_PASSWORD= (Colocar a senha que vocês definiriam)
