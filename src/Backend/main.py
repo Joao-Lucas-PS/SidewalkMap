@@ -23,6 +23,8 @@ def gerar_hash_senha(senha):
 
 
 # 1. USUÁRIOS E AUTENTICAÇÃO
+
+# Verificação de Gestor
 def existe_gestor():
   conexao = conectar_banco()
   cursor = conexao.cursor()
@@ -36,7 +38,7 @@ def existe_gestor():
   conexao.close()
   return total > 0
 
-
+# Casdastro de Usuário
 def cadastrar_usuario(perfil="usuario"):
   print("\nCADASTRO DE USUARIO:\n")
   nome = input("Nome: ").strip()
@@ -81,8 +83,9 @@ def cadastrar_primeiro_gestor():
     cadastrar_usuario("responsavel")
 
 
+# Função de login no sistema para acessar os Menus específicos
 def fazer_login():
-  print("\n=== LOGIN ===")
+  print("\nLOGIN\n")
   email = input("E-mail: ").strip().lower()
   senha = input("Senha: ").strip()
 
@@ -136,7 +139,7 @@ def consultar_categorias():
     desc = cat[2]
     if desc == None or desc == "":
       desc = "(sem descrição)"
-    print(cat[0], "-", cat[1], "|", desc)
+    print(cat[0], "-", cat[1], "\n", desc)
 
 
 def listar_todas_categorias():
@@ -171,7 +174,7 @@ def listar_todas_categorias():
 
 
 def cadastrar_categoria():
-  print("\n--- CADASTRAR CATEGORIA ---")
+  print("\nCADASTRAR CATEGORIA")
   nome = input("Nome da categoria: ").strip()
 
   if nome == "":
@@ -224,7 +227,7 @@ def menu_gerenciar_categorias():
 
 
 def cadastrar_relato(usuario):
-  print("\n--- REGISTRAR RELATO ---")
+  print("\nREGISTRAR RELATO\n")
 
   consultar_categorias()
   id_cat_digitado = input("\nDigite o ID da categoria desejada: ").strip()
@@ -366,7 +369,7 @@ def consultar_relato():
 
 # 4. MENUS DO SISTEMA
 
-
+# Menu usuário normal
 def menu_usuario_comum(usuario):
   while True:
     print("\nMENU DO USUÁRIO\n")
@@ -392,7 +395,7 @@ def menu_usuario_comum(usuario):
     else:
       print("Opção inválida.")
 
-
+# Menu do Gestor
 def menu_gestor(usuario):
   while True:
     print("\nMENU DO GESTOR\n")
@@ -418,7 +421,7 @@ def menu_gestor(usuario):
     else:
       print("Opção inválida.")
 
-
+# Menu de Cadastro
 def menu_inicial():
   while True:
     print("\nSIDEWALK MAP\n")
